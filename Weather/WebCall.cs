@@ -12,13 +12,12 @@ namespace Weather
     public class WebCall
     {
         // api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
-        string url = "api.openweathermap.org/data/2.5/weather?zip=";
+        string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
 
         public void call(string zipCode)
         {
             string myURL = url + zipCode + "&appid=" + Constants.WEATHER_KEY;
-            Console.WriteLine(myURL);
-
+            
             // Create a request for the URL. 		
             WebRequest request = WebRequest.Create(myURL);
 

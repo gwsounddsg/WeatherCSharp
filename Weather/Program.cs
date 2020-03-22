@@ -1,12 +1,32 @@
 ﻿using System;
 
+
+
 namespace Weather
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string zipCode = "33573";
+
+            //Console.WriteLine("What's the zip code you want to get the weather for?");
+            //zipCode = Console.ReadLine();
+
+            //if (zipCode.Length != 5)
+            //{
+            //    Console.WriteLine("The zipcode you entered, {0}, is not valid", zipCode);
+            //    return;
+            //}
+
+            // get zip code
+            WebCall myCall = new WebCall();
+            myCall.call(zipCode);
+
+            // display weather
+
+
+            // terminate
         }
     }
 }

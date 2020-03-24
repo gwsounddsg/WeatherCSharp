@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 
@@ -11,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Weather
 {
-    public class WebCall
+    public class WebCall: IWebCall
     {
         
         private string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
@@ -21,8 +20,7 @@ namespace Weather
 
 
 
-        public void PullData(string zipCode)
-        {
+        public void PullData(string zipCode) {
             string myURL = url + zipCode + "&appid=" + Constants.WEATHER_KEY;
             
             // Create a request for the URL. 		
@@ -33,7 +31,6 @@ namespace Weather
             // read and convert to json
             StreamReader reader = new StreamReader(stream);
             string content = reader.ReadToEnd();
-            string json = JsonConvert.SerializeObject(content);
 
             // parse into JObject
             zipData = JObject.Parse(content);
@@ -46,10 +43,11 @@ namespace Weather
         }
 
 
-        public double GetFahrenheit()
-        {
+        public double GetFahrenheit() {
             string str = GetKelvinAsString();
-            if (str == "0") return 0.0;
+            if (str == "0") {
+                return 0.0;
+            }
 
             double kelvin = Convert.ToDouble(str);
             return (kelvin * (9.0/5.0)) - 459.67;

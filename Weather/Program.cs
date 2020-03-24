@@ -28,7 +28,7 @@ namespace Weather
             }
 
             // get zip code
-            WebCall myCall = new WebCall();
+            IWebCall myCall = new WebCall();
             myCall.PullData(zipCode);
 
             // display weather

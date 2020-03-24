@@ -13,9 +13,17 @@ namespace Weather
             Console.WriteLine("What's the zip code you want to get the weather for?");
             zipCode = Console.ReadLine();
 
+            // length check
             if (zipCode.Length != 5)
             {
-                Console.WriteLine("The zipcode you entered, {0}, is not valid", zipCode);
+                Console.WriteLine("The zipcode you entered, {0}, is not the right length of 5 numbers", zipCode);
+                return;
+            }
+
+            // type check
+            if (!Int32.TryParse(zipCode, out _))
+            {
+                Console.WriteLine("The zipcode you entered, {0}, is not valid. It contains non-numeric characters", zipCode);
                 return;
             }
 

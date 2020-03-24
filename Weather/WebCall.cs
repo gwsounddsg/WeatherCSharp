@@ -51,5 +51,15 @@ namespace Weather
             string str = zipData["main"]["temp"].ToString();
             return str;
         }
+
+
+        public double GetFahrenheit()
+        {
+            if (zipData == null) { return 0.0; }
+            string str = zipData["main"]["temp"].ToString();
+
+            double kelvin = Convert.ToDouble(str);
+            return (kelvin * (9.0/5.0)) - 459.67;
+        }
     }
 }

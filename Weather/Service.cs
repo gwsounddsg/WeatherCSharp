@@ -20,6 +20,7 @@ namespace Weather
         }
 
 
+        // Dependency injection, mostly for unit testing
         public Service(IWebCall wc)
         {
             _webCall = wc;

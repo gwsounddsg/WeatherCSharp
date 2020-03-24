@@ -40,26 +40,31 @@ namespace Weather
             string content = reader.ReadToEnd();
             string json = JsonConvert.SerializeObject(content);
 
-            // parse
+            // parse into JObject
             zipData = JObject.Parse(content);
         }
 
 
         public string GetKelvin()
         {
-            if (zipData == null) { return "0"; }
-            string str = zipData["main"]["temp"].ToString();
-            return str;
+            return GetKelvinAsString();
         }
 
 
         public double GetFahrenheit()
         {
-            if (zipData == null) { return 0.0; }
-            string str = zipData["main"]["temp"].ToString();
+            string str = GetKelvinAsString();
+            if (str == "0") return 0.0;
 
             double kelvin = Convert.ToDouble(str);
             return (kelvin * (9.0/5.0)) - 459.67;
+        }
+
+
+        private string GetKelvinAsString()
+        {
+            if (zipData == null) { return "0"; }
+            return zipData["main"]["temp"].ToString();
         }
     }
 }

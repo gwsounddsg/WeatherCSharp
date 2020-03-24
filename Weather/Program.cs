@@ -25,10 +25,7 @@ namespace Weather
 
             // display weather
             double fahrinheit = myCall.GetFahrenheit();
-            Console.WriteLine("Temperature is {0:N2}F", fahrinheit);
-
-            // terminate
-            
+            Console.WriteLine("Temperature is {0:N2}F", fahrinheit);           
         }
     }
 }

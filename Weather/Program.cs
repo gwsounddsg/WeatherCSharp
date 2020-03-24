@@ -21,10 +21,10 @@ namespace Weather
 
             // get zip code
             WebCall myCall = new WebCall();
-            myCall.call(zipCode);
+            myCall.PullData(zipCode);
 
             // display weather
-
+            Console.WriteLine(myCall.GetKelvin());
 
             // terminate
             

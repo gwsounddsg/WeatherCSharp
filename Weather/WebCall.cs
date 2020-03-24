@@ -16,7 +16,6 @@ namespace Weather
     {
         // api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
         private string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
-
         private JObject zipData;
 
 
@@ -55,10 +54,17 @@ namespace Weather
         }
 
 
+
+
+
+        #region PrivateMethods
+
         private string GetKelvinAsString()
         {
             if (zipData == null) { return "0"; }
             return zipData["main"]["temp"].ToString();
         }
+
+        #endregion PrivateMethods 
     }
 }

@@ -12,16 +12,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Weather
 {
-    public class SearchResults
-    {
-        public string Temp { get; set; }
-    }
-
-
     public class WebCall
     {
         // api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
-        string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
+        private string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
 
         private JObject zipData;
 

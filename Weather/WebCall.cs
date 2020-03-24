@@ -14,9 +14,12 @@ namespace Weather
 {
     public class WebCall
     {
-        // api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={your api key}
+        
         private string url = "http://api.openweathermap.org/data/2.5/weather?zip=";
         private JObject zipData;
+
+
+
 
 
         public void PullData(string zipCode)

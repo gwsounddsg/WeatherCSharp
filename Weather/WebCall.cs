@@ -21,6 +21,8 @@ namespace Weather
 
 
         public void PullData(string zipCode) {
+            if (!ZipCheck(zipCode)) { return; }
+
             string myURL = url + zipCode + "&appid=" + Constants.WEATHER_KEY;
             
             // Create a request for the URL. 		
@@ -58,6 +60,25 @@ namespace Weather
 
 
         #region PrivateMethods
+
+        private bool ZipCheck(string zip)
+        {
+            // length check
+            if (zip.Length != 5)
+            {
+                Console.WriteLine("The zipcode you entered, {0}, is not the right length of 5 numbers", zip);
+                return false;
+            }
+
+            // type check
+            if (!Int32.TryParse(zip, out _))
+            {
+                Console.WriteLine("The zipcode you entered, {0}, is not valid. It contains non-numeric characters", zip);
+                return false;
+            }
+
+            return true;
+        }
 
         private string GetKelvinAsString()
         {
